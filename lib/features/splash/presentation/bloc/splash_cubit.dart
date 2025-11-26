@@ -1,0 +1,11 @@
+import 'package:coffeecafe/features/splash/presentation/bloc/splash_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class SplashCubit extends Cubit<SplashState> {
+  SplashCubit() : super(const SplashInitial());
+
+  Future<void> start() async {
+    await Future<void>.delayed(const Duration(seconds: 4));
+    emit(const SplashNavigateLogin());
+  }
+}
