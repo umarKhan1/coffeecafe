@@ -1,5 +1,5 @@
-import 'package:coffeecafe/features/splash/presentation/bloc/splash_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:coffeecafe/features/splash/cubit/splash_state.dart';
 
 class SplashCubit extends Cubit<SplashState> {
   SplashCubit() : super(const SplashInitial());

@@ -1,4 +1,5 @@
-import 'package:coffeecafe/features/splash/presentation/bloc/splash_cubit.dart';
+import 'package:coffeecafe/features/auth/cubit/login_cubit_vaildator/login_validator_cubit.dart';
+import 'package:coffeecafe/features/splash/cubit/splash_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppProviders {
@@ -6,5 +7,6 @@ class AppProviders {
 
   static List<BlocProvider> global() => <BlocProvider>[
         BlocProvider<SplashCubit>(create: (_) => SplashCubit()),
+        BlocProvider<LoginValidatorCubit>(create: (_) => LoginValidatorCubit()),
       ];
 }

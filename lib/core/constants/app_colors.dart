@@ -9,7 +9,7 @@ class AppColors {
 
   // Optional neutrals/surfaces for dark theme
   static const Color background = Color(0xFF0E0E0E);
-  static const Color surface = Color(0xFF121212);
+  static const Color surface = Color(0xFFA97C37);
   static const Color onPrimary = Colors.white;
   static const Color onSecondary = Colors.black;
   static const Color onBackground = Colors.white;
