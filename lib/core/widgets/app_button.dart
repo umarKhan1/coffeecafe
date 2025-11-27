@@ -20,7 +20,7 @@ class AppButton extends StatelessWidget {
           backgroundColor: scheme.secondary,
           foregroundColor: scheme.onSecondary,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(14),
           ),
         ),
         child: Row(

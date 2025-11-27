@@ -1,4 +1,5 @@
 import 'package:coffeecafe/features/auth/presentation/pages/login_page.dart';
+import 'package:coffeecafe/features/auth/presentation/pages/signup_page.dart';
 import 'package:coffeecafe/features/splash/presentation/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -8,6 +9,7 @@ class AppRoutes {
 
   static const splash = '/';
   static const login = '/login';
+  static const signup = '/signup';
 }
 
 final GoRouter appRouter = GoRouter(
@@ -20,6 +22,10 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.login,
       pageBuilder: (context, state) => const MaterialPage(child: LoginPage()),
+    ),
+    GoRoute(
+      path: AppRoutes.signup,
+      pageBuilder: (context, state) => const MaterialPage(child: SignupPage()),
     ),
   ],
 );

@@ -17,10 +17,17 @@ class AppStrings {
   static const passwordHint = '********';
   static const forgotPassword = 'Forgot password?';
   static const dontHaveAccount = "Don't have an account?";
+  static const alreadyHaveAccount = 'Already have an account?';
   static const signUp = 'Sign Up';
   static const signingIn = 'Signing in...';
+  static const signingUp = 'Signing up...';
+  static const rePassword = 'Re-Password';
+  static const signUpSubtitle = "Let's create you an account.";
+
+  // Validation
   static const errPhoneRequired = 'Phone is required';
   static const errPhoneInvalid = 'Enter a valid phone number';
   static const errPasswordRequired = 'Password is required';
   static const errPasswordMin = 'Min 6 characters';
+  static const errPasswordMismatch = 'Passwords do not match';
 }
