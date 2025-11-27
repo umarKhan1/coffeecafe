@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTextField extends StatelessWidget {
   const AppTextField({
@@ -15,6 +16,8 @@ class AppTextField extends StatelessWidget {
     this.obscureText = false,
     this.isRequired = true,
     this.errorText,
+    this.suffixIcon,
+    this.suffixOnPressed,
   });
 
   final String label;
@@ -28,6 +31,9 @@ class AppTextField extends StatelessWidget {
   final bool obscureText;
   final bool isRequired;
   final String? errorText;
+  // New: optional suffix icon and handler (e.g., password visibility toggle)
+  final IconData? suffixIcon;
+  final VoidCallback? suffixOnPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -45,15 +51,22 @@ class AppTextField extends StatelessWidget {
               // Border + field
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(15),
                   border: Border.all(
-                    color: hasError ? const Color(0xFFFF4D4D) : Colors.white.withOpacity(0.32),
+                    color: hasError
+                        ? const Color(0xFFFF4D4D)
+                        : Colors.white.withValues(alpha: 0.32),
                     width: 1.2,
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+                  // Keep compact padding while allowing vertical centering
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 12,
+                  ),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       if (prefixIcon != null)
                         Padding(
@@ -72,9 +85,11 @@ class AppTextField extends StatelessWidget {
                           keyboardType: keyboardType,
                           inputFormatters: inputFormatters,
                           obscureText: obscureText,
-                          style: const TextStyle(
+                          // Center cursor and text vertically in the available height
+                          textAlignVertical: TextAlignVertical.center,
+                          style:  TextStyle(
                             color: Colors.white,
-                            fontSize: 17,
+                            fontSize: 15.sp,
                             fontWeight: FontWeight.w500,
                           ),
                           cursorColor: Colors.white,
@@ -82,12 +97,25 @@ class AppTextField extends StatelessWidget {
                             isDense: true,
                             hintText: hint,
                             hintStyle: TextStyle(
-                              color: Colors.white.withOpacity(0.55),
-                              fontSize: 17,
+                              color: Colors.white.withValues(alpha: 0.55),
+                              fontSize: 15.sp,
                               fontWeight: FontWeight.w400,
                             ),
                             border: InputBorder.none,
-                            contentPadding: EdgeInsets.zero,
+                            // Allow slight vertical insets to help centering
+                            contentPadding: suffixIcon != null
+                                ? const EdgeInsets.all(2)
+                                : const EdgeInsets.symmetric(vertical: 10),
+                            suffixIcon: suffixIcon != null
+                                ? IconButton(
+                                    onPressed: suffixOnPressed,
+                                    icon: Icon(
+                                      suffixIcon,
+                                      color: Colors.white,
+                                      size: 20.sp,
+                                    ),
+                                  )
+                                : null,
                           ),
                         ),
                       ),

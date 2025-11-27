@@ -78,6 +78,8 @@ class LoginPage extends StatelessWidget {
                     obscureText: !state.showPassword,
                     onChanged: (v) => context.read<LoginValidatorCubit>().passwordChanged(v),
                     errorText: state.passwordError,
+                    suffixIcon: state.showPassword ? Icons.visibility_off : Icons.visibility,
+                    suffixOnPressed: () => context.read<LoginValidatorCubit>().togglePassword(),
                   ),
                   SizedBox(height: 18.h),
                   Align(

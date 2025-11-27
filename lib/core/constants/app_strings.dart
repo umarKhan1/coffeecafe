@@ -10,13 +10,13 @@ class AppStrings {
 
   // Auth/Login
   static const signIn = 'Sign In';
-  static const signInSubtitle = "We\'ve already met!";
+  static const signInSubtitle = "We've already met!";
   static const phoneNumber = 'Phone Number';
   static const phoneHint = '+91 9841012345';
   static const password = 'Password';
   static const passwordHint = '********';
   static const forgotPassword = 'Forgot password?';
-  static const dontHaveAccount = "Don\'t have an account?";
+  static const dontHaveAccount = "Don't have an account?";
   static const signUp = 'Sign Up';
   static const signingIn = 'Signing in...';
   static const errPhoneRequired = 'Phone is required';
