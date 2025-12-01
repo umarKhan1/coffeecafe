@@ -31,13 +31,17 @@ class SignupPage extends StatelessWidget {
                   Center(
                     child: Column(
                       children: [
-                        Image.asset(AppAssets.cup, width: 65.w, fit: BoxFit.cover),
+                        Image.asset(
+                          AppAssets.cup,
+                          width: 65.w,
+                          fit: BoxFit.cover,
+                        ),
                         SizedBox(height: 12.h),
                         Text(
                           AppStrings.coffeeTaste,
-                          style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                                letterSpacing: 3,
-                              ),
+                          style: Theme.of(
+                            context,
+                          ).textTheme.labelLarge?.copyWith(letterSpacing: 3),
                         ),
                       ],
                     ),
@@ -47,55 +51,66 @@ class SignupPage extends StatelessWidget {
                     AppStrings.signUp,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                          fontWeight: FontWeight.w800,
-                        ),
+                      fontWeight: FontWeight.w800,
+                    ),
                   ),
                   SizedBox(height: 8.h),
                   Text(
                     AppStrings.signUpSubtitle,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: const Color(0xCCFFFFFF),
-                        ),
+                      color: const Color(0xCCFFFFFF),
+                    ),
                   ),
                   SizedBox(height: 60.h),
-    
+
                   // Phone
                   AppTextField(
                     label: AppStrings.phoneNumber,
                     hint: AppStrings.phoneHint,
                     prefixIcon: Icons.phone_iphone,
                     keyboardType: TextInputType.phone,
-                    onChanged: (v) => context.read<SignupValidatorCubit>().phoneChanged(v),
+                    onChanged: (v) =>
+                        context.read<SignupValidatorCubit>().phoneChanged(v),
                     errorText: state.phoneError,
                   ),
                   SizedBox(height: 20.h),
-    
+
                   // Password
                   AppTextField(
                     label: AppStrings.password,
                     hint: AppStrings.passwordHint,
                     prefixIcon: Icons.password,
                     obscureText: !state.showPassword,
-                    onChanged: (v) => context.read<SignupValidatorCubit>().passwordChanged(v),
+                    onChanged: (v) =>
+                        context.read<SignupValidatorCubit>().passwordChanged(v),
                     errorText: state.passwordError,
-                    suffixIcon: state.showPassword ? Icons.visibility_off : Icons.visibility,
-                    suffixOnPressed: () => context.read<SignupValidatorCubit>().togglePassword(),
+                    suffixIcon: state.showPassword
+                        ? Icons.visibility_off
+                        : Icons.visibility,
+                    suffixOnPressed: () =>
+                        context.read<SignupValidatorCubit>().togglePassword(),
                   ),
                   SizedBox(height: 20.h),
-    
+
                   // Confirm Password
                   AppTextField(
                     label: AppStrings.rePassword,
                     hint: AppStrings.passwordHint,
                     prefixIcon: Icons.password,
                     obscureText: !state.showConfirmPassword,
-                    onChanged: (v) => context.read<SignupValidatorCubit>().confirmPasswordChanged(v),
+                    onChanged: (v) => context
+                        .read<SignupValidatorCubit>()
+                        .confirmPasswordChanged(v),
                     errorText: state.confirmPasswordError,
-                    suffixIcon: state.showConfirmPassword ? Icons.visibility_off : Icons.visibility,
-                    suffixOnPressed: () => context.read<SignupValidatorCubit>().toggleConfirmPassword(),
+                    suffixIcon: state.showConfirmPassword
+                        ? Icons.visibility_off
+                        : Icons.visibility,
+                    suffixOnPressed: () => context
+                        .read<SignupValidatorCubit>()
+                        .toggleConfirmPassword(),
                   ),
-    
+
                   SizedBox(height: 32.h),
                   AppButton(
                     label: AppStrings.signUp,
@@ -109,15 +124,15 @@ class SignupPage extends StatelessWidget {
                                   newState.passwordError == null &&
                                   newState.confirmPasswordError == null &&
                                   !newState.isSubmitting) {
-                                final messenger = ScaffoldMessenger.maybeOf(context);
-                                messenger?.showSnackBar(
-                                  const SnackBar(content: Text(AppStrings.signingUp)),
-                                );
+                                // On successful sign up, reset auth states and go to dashboard shell
+                                context.read<LoginValidatorCubit>().reset();
+                                context.read<SignupValidatorCubit>().reset();
+                                context.pushReplacement('/dashboard');
                               }
                             });
                           },
                   ),
-    
+
                   SizedBox(height: 24.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -135,7 +150,8 @@ class SignupPage extends StatelessWidget {
                         },
                         child: Text(
                           AppStrings.signIn,
-                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          style: Theme.of(context).textTheme.titleMedium
+                              ?.copyWith(
                                 color: AppColors.surface,
                                 decoration: TextDecoration.underline,
                                 decorationColor: AppColors.surface,

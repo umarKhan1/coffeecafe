@@ -1,6 +1,6 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:coffeecafe/core/constants/app_strings.dart';
-import 'signup_validator_state.dart';
+import 'package:coffeecafe/features/auth/cubit/signup_validator/signup_validator_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignupValidatorCubit extends Cubit<SignupValidatorState> {
   SignupValidatorCubit() : super(const SignupValidatorState());
@@ -66,7 +66,9 @@ class SignupValidatorCubit extends Cubit<SignupValidatorState> {
     final validated = validate();
     if (validated.phoneError != null ||
         validated.passwordError != null ||
-        validated.confirmPasswordError != null) return;
+        validated.confirmPasswordError != null) {
+      return;
+    }
 
     emit(state.copyWith(isSubmitting: true));
     await Future<void>.delayed(const Duration(milliseconds: 800));

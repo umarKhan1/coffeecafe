@@ -109,23 +109,17 @@ class LoginPage extends StatelessWidget {
                     onPressed: state.isSubmitting
                         ? null
                         : () {
-                      final cubit = context.read<LoginValidatorCubit>();
-                      cubit.submit().then((_) {
-                        final newState = cubit.state;
-                        if (newState.phoneError == null &&
-                            newState.passwordError == null &&
-                            !newState.isSubmitting) {
-                          final messenger = ScaffoldMessenger.maybeOf(
-                            context,
-                          );
-                          messenger?.showSnackBar(
-                            const SnackBar(
-                              content: Text(AppStrings.signingIn),
-                            ),
-                          );
-                        }
-                      });
-                    },
+                            final cubit = context.read<LoginValidatorCubit>();
+                            cubit.submit().then((_) {
+                              final newState = cubit.state;
+                              if (newState.phoneError == null &&
+                                  newState.passwordError == null &&
+                                  !newState.isSubmitting) {
+                                // Navigate to dashboard shell after successful sign in
+                                context.pushReplacement(AppRoutes.dashboard);
+                              }
+                            });
+                          },
                   ),
                   SizedBox(height: 33.h),
                   Row(

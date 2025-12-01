@@ -14,4 +14,9 @@ class AppColors {
   static const Color onSecondary = Colors.black;
   static const Color onBackground = Colors.white;
   static const Color onSurface = Colors.white;
+
+  // Central app color constants
+  static const Color darkCard = Color(0xFF1E1A17);
+  static const Color accent = Color(0xFFB68A53);
+  static const Color border = Color(0x40FFFFFF); // 25% white
 }

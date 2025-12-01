@@ -1,13 +1,13 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:coffeecafe/core/constants/app_strings.dart';
-import 'login_validator_state.dart';
+import 'package:coffeecafe/features/auth/cubit/login_cubit_vaildator/login_validator_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginValidatorCubit extends Cubit<LoginValidatorState> {
   LoginValidatorCubit() : super(const LoginValidatorState());
 
   // Reset to initial state
   void reset() => emit(const LoginValidatorState());
-
+  
   void phoneChanged(String value) {
     emit(state.copyWith(phone: value, phoneError: null));
   }

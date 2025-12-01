@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:coffeecafe/core/di/app_providers.dart';
 import 'package:coffeecafe/core/routes/app_router.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CoffeeCafeApp extends StatelessWidget {
   const CoffeeCafeApp({super.key});
