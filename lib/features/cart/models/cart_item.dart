@@ -1,5 +1,5 @@
-import 'package:equatable/equatable.dart';
 import 'package:coffeecafe/features/product_detail/models/milk_type.dart';
+import 'package:equatable/equatable.dart';
 
 class CartItem extends Equatable {
   const CartItem({
